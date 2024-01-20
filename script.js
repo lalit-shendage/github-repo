@@ -11,6 +11,7 @@ function hideLoader() {
     $('#loader').hide();
 }
 
+// Userinfo
 function displayUserInfo(user) {
     $('#userImage').attr('src', user.avatar_url);
     $('#userName').text(user.name || user.login);
@@ -36,6 +37,8 @@ function extractBioLinks(bio) {
     const matches = bio.match(regex) || [];
     return matches.map(url => ({ name: url, url }));
 }
+
+// for displaying public repos
 function displayRepositories(repositories) {
     const repositoriesDiv = $('#repositories');
     repositoriesDiv.empty();
@@ -69,6 +72,8 @@ function displayRepositories(repositories) {
         });
     });
 
+// pagination
+
     const paginationDiv = $('#pagination');
     paginationDiv.empty();
 
@@ -96,7 +101,7 @@ function displayRepositories(repositories) {
     });
 }
 
-
+// fetching datafrom github api
 function fetchUserData() {
     showLoader();
 
@@ -156,6 +161,7 @@ function changePage(newPage) {
     }
 }
 
+// fetching username from url if another username is provided
 function getUsernameFromUrl() {
     const hash = window.location.hash;
     const username = hash.slice(1); 
